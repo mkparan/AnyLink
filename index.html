@@ -6,6 +6,12 @@
 
     <!-- bootstrap css -->
     <link rel="stylesheet" href="assets/vendor/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>AnyLink</title>
   </head>
   <body>
@@ -29,7 +35,7 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="https://github.com/mkparan/AnyLink"
@@ -44,6 +50,7 @@
       </div>
     </nav>
 
+    <!-- Main Content -->
     <main class="container py-5">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
@@ -62,6 +69,37 @@
           </form>
         </div>
       </div>
+
+      <div class="text-center mt-5">
+        <button type="button" class="btn btn-primary btn-sm">
+          <i class="fa-brands fa-facebook me-2"></i>Facebook
+        </button>
+        <button type="button" class="btn btn-secondary btn-sm">
+          <i class="fa-brands fa-tiktok me-2"></i>TikTok
+        </button>
+        <button type="button" class="btn btn-danger btn-sm">
+          <i class="fa-brands fa-youtube me-2"></i>YouTube
+        </button>
+        <button type="button" class="btn btn-dark btn-sm">
+          <i class="fa-brands fa-instagram me-2"></i>Instagram
+        </button>
+      </div>
+
+      <br />
+
+      <hr />
+
+      <section id="about" class="about section">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h3 class="mb-3">About AnyLink</h3>
+            <p class="text-muted">
+              AnyLink is a simple and efficient video link downloader that
+              allows you to download videos from various platforms with ease.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
