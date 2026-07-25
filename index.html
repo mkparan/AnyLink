@@ -11,6 +11,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">AnyLink</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -22,17 +23,18 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand fw-bold" href="#">AnyLink</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link" href="https://github.com/mkparan/AnyLink"
+                >GitHub</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -41,7 +43,26 @@
         </div>
       </div>
     </nav>
-    <!-- bootstrap js -->
+
+    <main class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h1 class="mb-3">Welcome to AnyLink</h1>
+          <p class="text-muted">Your All in One Video Link Downloader.</p>
+
+          <div class="input-group mx-auto mt-4" style="max-width: 36rem">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Paste your link here"
+              aria-label="Paste your link here"
+            />
+            <button type="button" class="btn btn-secondary">Download</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
