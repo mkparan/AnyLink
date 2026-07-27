@@ -39,9 +39,44 @@ AnyLink allows users to paste a video URL, process it through the backend, and d
 
 ## Getting Started
 
-1. Open the project folder in your preferred code editor.
-2. Run the web app locally by opening the HTML page in a browser.
-3. Paste a supported video link and start downloading.
+### 1. Install Python dependencies
+
+Open a terminal in the project folder and run:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+If you are using the project virtual environment that was created locally, use:
+
+```bash
+d:/Projects/AnyLink/.venv/Scripts/python.exe -m pip install -r requirements.txt
+```
+
+### 2. Start the app
+
+Run the Flask backend with:
+
+```bash
+d:/Projects/AnyLink/.venv/Scripts/python.exe app.py
+```
+
+Then open your browser at:
+
+```text
+http://127.0.0.1:5000
+```
+
+### 3. Use the downloader
+
+1. Paste a supported video URL into the input field.
+2. Click Download.
+3. Wait for the backend to process the link and provide a download link.
+
+## Notes
+
+- The app uses Flask and yt-dlp to download videos from supported links.
+- Some websites may block or restrict downloads, so results may vary depending on the source.
 
 ## Tech Stack
 
