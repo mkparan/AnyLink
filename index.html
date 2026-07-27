@@ -114,6 +114,7 @@
       const form = document.getElementById("download-form");
       const urlInput = document.getElementById("video-url");
       const status = document.getElementById("status-message");
+      const apiPort = "5000";
 
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -124,10 +125,15 @@
           return;
         }
 
+        if (window.location.port !== apiPort) {
+          status.textContent = `Please open this page through the Flask server at http://127.0.0.1:${apiPort}`;
+          return;
+        }
+
         status.textContent = "Preparing your download...";
 
         try {
-          const response = await fetch("/download", {
+          const response = await fetch(`/download`, {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams({ url }),

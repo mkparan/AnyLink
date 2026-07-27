@@ -31,7 +31,9 @@ def download_video(url: str) -> Path:
         raise RuntimeError("yt-dlp is not installed. Install dependencies with pip install -r requirements.txt")
 
     safe_prefix = uuid.uuid4().hex
-    output_template = str(DOWNLOAD_DIR / f"{safe_prefix}.%(title)s.%(ext)s")
+    # Use the video id for the filename (short and filesystem-safe) and
+    # enable Windows filename sanitization to avoid invalid characters.
+    output_template = str(DOWNLOAD_DIR / f"{safe_prefix}.%(id)s.%(ext)s")
     options = {
         "format": "best[ext=mp4]/best",
         "outtmpl": output_template,
@@ -39,10 +41,14 @@ def download_video(url: str) -> Path:
         "quiet": True,
         "no_warnings": True,
         "socket_timeout": 30,
+        "windowsfilenames": True,
     }
 
-    with yt_dlp.YoutubeDL(options) as ydl:
-        ydl.extract_info(url, download=True)
+    try:
+        with yt_dlp.YoutubeDL(options) as ydl:
+            ydl.extract_info(url, download=True)
+    except Exception as exc:  # convert any yt-dlp error into a RuntimeError
+        raise RuntimeError(f"yt-dlp error: {exc}")
 
     matches = sorted(DOWNLOAD_DIR.glob(f"{safe_prefix}.*"))
     if matches:
@@ -54,11 +60,6 @@ def download_video(url: str) -> Path:
 @app.route("/")
 def index():
     return send_file(BASE_DIR / "index.html")
-
-
-@app.route("/<path:filename>")
-def static_files(filename: str):
-    return send_from_directory(BASE_DIR, filename)
 
 
 @app.route("/health")
@@ -89,6 +90,11 @@ def download():
 @app.route("/downloads/<path:filename>")
 def serve_download(filename: str):
     return send_from_directory(DOWNLOAD_DIR, filename, as_attachment=True)
+
+
+@app.route("/assets/<path:filename>")
+def serve_assets(filename: str):
+    return send_from_directory(ASSETS_DIR, filename)
 
 
 if __name__ == "__main__":

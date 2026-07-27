@@ -39,7 +39,29 @@ AnyLink allows users to paste a video URL, process it through the backend, and d
 
 ## Getting Started
 
-### 1. Install Python dependencies
+### 1. Activate the virtual environment
+
+If you are using the local virtual environment in this project, activate it first:
+
+On Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+On Windows Command Prompt:
+
+```cmd
+.venv\Scripts\activate.bat
+```
+
+On Git Bash or WSL:
+
+```bash
+source .venv/Scripts/activate
+```
+
+### 2. Install Python dependencies
 
 Open a terminal in the project folder and run:
 
@@ -47,18 +69,12 @@ Open a terminal in the project folder and run:
 python -m pip install -r requirements.txt
 ```
 
-If you are using the project virtual environment that was created locally, use:
-
-```bash
-d:/Projects/AnyLink/.venv/Scripts/python.exe -m pip install -r requirements.txt
-```
-
-### 2. Start the app
+### 3. Start the server
 
 Run the Flask backend with:
 
 ```bash
-d:/Projects/AnyLink/.venv/Scripts/python.exe app.py
+python app.py
 ```
 
 Then open your browser at:
@@ -67,7 +83,15 @@ Then open your browser at:
 http://127.0.0.1:5000
 ```
 
-### 3. Use the downloader
+> Important: do not open the page from another local server or a static preview on a different port such as 5500. The form must submit to the Flask backend on port 5000.
+
+### 4. Open the HTML page directly (not recommended)
+
+If you open `index.html` directly in the browser or through a static preview server, the download form will not work because it needs the Python backend.
+
+Use the Flask server URL above instead.
+
+### 5. Use the downloader
 
 1. Paste a supported video URL into the input field.
 2. Click Download.
